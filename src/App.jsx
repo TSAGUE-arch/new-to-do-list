@@ -1,5 +1,6 @@
 import React from 'react'
-import { useState ,useRef,useEffect,useMemo} from 'react'
+import { createContext } from 'react';
+import { useState ,useRef,useEffect,useMemo,useContext,useReducer} from 'react'
 import './App.css'
 
 
@@ -11,7 +12,7 @@ export default function App () {
   const inputRef=useRef(null);
   
   //tableau categorie
-  const Categories=["Education","Societe","Actualite"]
+  const Categories=["Education","Société","Actualité"]
   const [categorie,setCategorie]=useState("Education");
   const [currentTask,setCurrentTask]=useState();
   const [openModal,setOpenModal]=useState(false);
@@ -29,8 +30,7 @@ export default function App () {
   //ajouter une nouvelle tache!
   function AjouterTache() {
     if(task.trim()==='') return triggerError('empty');
-    alert(tasks.length>=3)
-    if(tasks.length>=3) return triggerError('full');
+    if(tasks.length>=5) return triggerError('full');
     
     const element={
       id:Date.now(),
@@ -117,7 +117,7 @@ useMemo(()=>{
       <div className='flex justify-center items-center  min-h-screen bg-cyan-950'>
           <div className=''> 
                 <div className="header">
-                    <h1 className='font-bold text-xl'>Mes taches journalieres</h1>
+                    <h1 className='font-bold text-xl'>Mes taches journalières</h1>
                     <span className='text-sm text-gray-300'>Aujourd'hui</span>
                 </div>
                 <div className='grid gap-2 '>
@@ -126,7 +126,7 @@ useMemo(()=>{
                     onInput={(e)=>setTask(e.target.value)}
                     ref={inputRef}
                     type="text" 
-                    placeholder='Ajoutez une tache...'
+                    placeholder='Ajouter une tache...'
                     className='mt-5 w-[60vw] bg-transparent border-2 border-cyan-900 pt-1 pb-0.5 px-2 rounded-md focus:outline-none focus:shadow-sm focus:shadow-cyan-800 '
                   />
                   <div className='flex gap-2 flex-wrap w-[60vw]'>
@@ -141,7 +141,7 @@ useMemo(()=>{
                     onClick={()=>AjouterTache()}
                     className='w-[60vw] bg-green-700 rounded-sm pt-0.5 pb-0.5 text-md font-bold cursor-pointer hover:bg-green-900'
                   >
-                    Ajoutez
+                    Ajouter
                   </button>
                   <span className='block text-md text-center text-red-500 font-bold  '>
                       {error.empty && "veuillez remplir correctement le champ de texte"}
@@ -205,6 +205,15 @@ useMemo(()=>{
                     <span className='block text-center text-gray-400'>
                       {!tachesFiltrer.length && "Liste vide"}
                     </span>
+                    {tachesFiltrer.length>0 &&
+                      <span
+                        className='block text-gray-300 mt-3'
+                      >
+                        {`${tachesFiltrer.filter(task => task.done).length} 
+                        Terminée(s) sur 
+                        ${tachesFiltrer.length}`}
+                      </span>
+                    }  
                 </div>
           </div>
       </div>
