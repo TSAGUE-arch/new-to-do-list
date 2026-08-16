@@ -1,6 +1,5 @@
 import React from 'react'
-import { createContext } from 'react';
-import { useState ,useRef,useEffect,useMemo,useContext,useReducer} from 'react'
+import { useState ,useRef,useEffect,useMemo} from 'react'
 import './App.css'
 
 
@@ -30,7 +29,7 @@ export default function App () {
   //ajouter une nouvelle tache!
   function AjouterTache() {
     if(task.trim()==='') return triggerError('empty');
-    if(tasks.length>=5) return triggerError('full');
+    if(tasks.length>=3) return triggerError('full');
     
     const element={
       id:Date.now(),
@@ -85,7 +84,7 @@ useMemo(()=>{
       {/*modale permettant la modification de la tache*/
         openModal &&
         <div  className="h-screen w-screen fixed  bg-[#00000066] z-9999 grid place-items-center transition-all duration-300 ease-in ">
-          <div className='grid gap-2 bg-cyan-950 p-8 rounded-lg '>
+          <div className='grid gap-2 bg-cyan-950 p-8 rounded-lg w-[70vw] '>
                   <span className='font-bold text-lg'>Modifier votre tache</span>
                   <input
                     value={currentTask.text}
@@ -117,7 +116,7 @@ useMemo(()=>{
       <div className='flex justify-center items-center  min-h-screen bg-cyan-950'>
           <div className=''> 
                 <div className="header">
-                    <h1 className='font-bold text-xl'>Mes taches journalières</h1>
+                    <h1 className='font-bold text-xl'>Mes taches journalières </h1>
                     <span className='text-sm text-gray-300'>Aujourd'hui</span>
                 </div>
                 <div className='grid gap-2 '>
@@ -127,9 +126,9 @@ useMemo(()=>{
                     ref={inputRef}
                     type="text" 
                     placeholder='Ajouter une tache...'
-                    className='mt-5 w-[60vw] bg-transparent border-2 border-cyan-900 pt-1 pb-0.5 px-2 rounded-md focus:outline-none focus:shadow-sm focus:shadow-cyan-800 '
+                    className='mt-5  w-[85vw] md:w-[60vw] bg-transparent border-2 border-cyan-900 pt-1 pb-0.5 px-2 rounded-md focus:outline-none focus:shadow-sm focus:shadow-cyan-800 '
                   />
-                  <div className='flex gap-2 flex-wrap w-[60vw]'>
+                  <div className='flex gap-2 flex-wrap w-[85vw] md:w-[60vw]'>
                     {Categories.map((n)=>
                           <div className='flex gap-1' key={n}>
                             <input type="radio" name="categorie" id="" value={n} checked={n === categorie} className='w-4 cursor-pointer' onChange={()=>setCategorie(n)} />
@@ -139,7 +138,7 @@ useMemo(()=>{
                   </div>
                   <button
                     onClick={()=>AjouterTache()}
-                    className='w-[60vw] bg-green-700 rounded-sm pt-0.5 pb-0.5 text-md font-bold cursor-pointer hover:bg-green-900'
+                    className='w-[85vw] md:w-[60vw] bg-green-700 rounded-sm pt-0.5 pb-0.5 text-md font-bold cursor-pointer hover:bg-green-900'
                   >
                     Ajouter
                   </button>
@@ -153,9 +152,9 @@ useMemo(()=>{
                       type="text" 
                       onInput={(e)=>setText(e.target.value)}
                       placeholder='Rechercher une tache...'
-                      className='mt-5 w-[60vw] bg-transparent border-2 border-cyan-900 pt-1 pb-0.5 px-2 rounded-md focus:outline-none focus:shadow-sm focus:shadow-cyan-800 '
+                      className='mt-5 w-[85vw] md:w-[60vw] bg-transparent border-2 border-cyan-900 pt-1 pb-0.5 px-2 rounded-md focus:outline-none focus:shadow-sm focus:shadow-cyan-800 '
                     />
-                    <div className='flex gap-2 flex-wrap w-[60vw]'>
+                    <div className='flex gap-2 flex-wrap w-[85vw] md:w-[60vw]'>
                       <div className='flex gap-1'>
                               <input type="radio" name="categorieshow" id="" value={"tous"} checked={categorieChoisi === ''} className='w-4 cursor-pointer' onChange={()=>setCategorieChoisi('')} />
                               <label htmlFor={"Tous"}>Tous</label>
@@ -171,7 +170,7 @@ useMemo(()=>{
                         {tachesFiltrer.map((task) =>
                             <div
                               key={task}
-                              className='flex gap-1 w-[60vw] pt-1 pb-1'
+                              className='flex gap-1 w-[85vw] md:w-[60vw] pt-1 pb-1'
                             >
                               <input 
                                 onChange={()=>SetDone(task.id)}
@@ -205,15 +204,6 @@ useMemo(()=>{
                     <span className='block text-center text-gray-400'>
                       {!tachesFiltrer.length && "Liste vide"}
                     </span>
-                    {tachesFiltrer.length>0 &&
-                      <span
-                        className='block text-gray-300 mt-3'
-                      >
-                        {`${tachesFiltrer.filter(task => task.done).length} 
-                        Terminée(s) sur 
-                        ${tachesFiltrer.length}`}
-                      </span>
-                    }  
                 </div>
           </div>
       </div>
