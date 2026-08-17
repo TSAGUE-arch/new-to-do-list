@@ -84,7 +84,7 @@ useMemo(()=>{
       {/*modale permettant la modification de la tache*/
         openModal &&
         <div  className="h-screen w-screen fixed  bg-[#00000066] z-9999 grid place-items-center transition-all duration-300 ease-in ">
-          <div className='grid gap-2 bg-cyan-950 p-8 rounded-lg w-[70vw] '>
+          <div className='grid gap-2 bg-cyan-950 p-8 rounded-lg w-[75vw] '>
                   <span className='font-bold text-lg'>Modifier votre tache</span>
                   <input
                     value={currentTask.text}
@@ -204,6 +204,15 @@ useMemo(()=>{
                     <span className='block text-center text-gray-400'>
                       {!tachesFiltrer.length && "Liste vide"}
                     </span>
+
+                    {tachesFiltrer.length>0 && 
+                         <span className='block  text-gray-300'>
+                          {`${tachesFiltrer.filter(task=>task.done).length}
+                            terminée(s) sur 
+                            ${tachesFiltrer.length}
+                          `}
+                        </span>
+                    }
                 </div>
           </div>
       </div>
