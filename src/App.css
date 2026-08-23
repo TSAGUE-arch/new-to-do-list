@@ -6,8 +6,6 @@
 body{
     font-family: "Inter", sans-serif;
     font-optical-sizing: auto;
-    scroll-behavior: smooth;
-    background-color: aliceblue;
     color: whitesmoke;
 }
 
@@ -15,4 +13,8 @@ html{
     scroll-behavior: smooth;
     scroll-padding: 5rem;
     overscroll-behavior: none;
+}
+
+:root{
+    accent-color: #121212;
 }
