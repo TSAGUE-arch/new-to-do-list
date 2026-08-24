@@ -88,14 +88,14 @@ useMemo(()=>{
       {/*modale permettant la modification de la tache*/
         openModal &&
         <div  className="h-screen w-screen fixed  bg-[#00000066] z-9999 grid place-items-center transition-all duration-300 ease-in ">
-          <div className={`grid gap-2 ${theme==="dark"? "bg-[#12121212]" :"bg-gray-50"} p-8 rounded-lg w-[70vw]`} >
+          <div className={`grid gap-2 ${theme==="dark"? "bg-gray-800" :"bg-gray-50"} p-8 rounded-lg w-[75vw]`} >
                   <span className={`font-bold text-lg ${theme==="dark"? "" :"text-gray-600"}`}>Modifier votre tache</span>
                   <input
                     value={currentTask.text}
                     onInput={(e)=>setCurrentTask(prev=>({...prev, text:e.target.value}))}
                     type="text" 
                     placeholder='Editez votre tache...'
-                    className={`mt-5 w-[60vw] bg-transparent border-2 ${theme==="dark"? "" :"placeholder:text-gray-400 text-gray-600"}  border-[#121212] pt-1 pb-0.5 px-2 rounded-md focus:outline-none focus:shadow-sm focus:shadow-[#121212] `}
+                    className={`mt-5 bg-transparent border-2 ${theme==="dark"? "" :"placeholder:text-gray-400 text-gray-600"}  border-[#121212] pt-1 pb-0.5 px-2 rounded-md focus:outline-none focus:shadow-sm focus:shadow-[#121212] `}
                   />
                   <div className={`flex gap-2 flex-wrap w-[60vw] ${theme==="dark"? "" :"text-gray-600"} `}>
                     {Categories.map((n)=>
@@ -117,7 +117,7 @@ useMemo(()=>{
           </div>
         </div> 
       }
-      <div className={`flex justify-center items-center  min-h-screen ${theme==="dark"? "bg-[#12121212]" :"bg-gray-50"}`}>
+      <div className={`flex justify-center items-center  min-h-screen ${theme==="dark"? "bg-gray-800" :"bg-gray-50"}`}>
           <div className=''> 
                 <div className="flex items-center justify-between">
                     <div>
@@ -133,7 +133,7 @@ useMemo(()=>{
                     ref={inputRef}
                     type="text" 
                     placeholder='Ajouter une tache...'
-                    className={`mt-5 w-[60vw] bg-transparent border-2 ${theme==="dark"? "" :"placeholder:text-gray-400 text-gray-600"}  border-[#121212] pt-1 pb-0.5 px-2 rounded-md focus:outline-none focus:shadow-sm focus:shadow-[#121212] `}
+                    className={` md:w-[60vw] mt-5  bg-transparent border-2 ${theme==="dark"? "" :"placeholder:text-gray-400 text-gray-600"}  border-[#121212] pt-1 pb-0.5 px-2 rounded-md focus:outline-none focus:shadow-sm focus:shadow-[#121212] `}
                   />
                   <div className={`flex gap-2 flex-wrap w-[85vw] md:w-[60vw] ${theme==="dark"? "" :"text-gray-600"} `}>
                     {Categories.map((n)=>
@@ -145,7 +145,7 @@ useMemo(()=>{
                   </div>
                   <button
                     onClick={()=>AjouterTache()}
-                    className='w-[85vw] md:w-[60vw] bg-green-700 rounded-sm pt-0.5 pb-0.5 text-md font-bold cursor-pointer hover:bg-green-900'
+                    className=' md:w-[60vw] bg-green-700 rounded-sm pt-0.5 pb-0.5 text-md font-bold cursor-pointer hover:bg-green-900'
                   >
                     Ajouter
                   </button>
@@ -159,7 +159,7 @@ useMemo(()=>{
                       type="text" 
                       onInput={(e)=>setText(e.target.value)}
                       placeholder='Rechercher une tache...'
-                      className={`mt-5 w-[60vw] bg-transparent border-2 ${theme==="dark"? "" :"placeholder:text-gray-400 text-gray-600"}  border-[#121212] pt-1 pb-0.5 px-2 rounded-md focus:outline-none focus:shadow-sm focus:shadow-[#121212] `}
+                      className={`mt-5 md:w-[60vw] bg-transparent border-2 ${theme==="dark"? "" :"placeholder:text-gray-400 text-gray-600"}  border-[#121212] pt-1 pb-0.5 px-2 rounded-md focus:outline-none focus:shadow-sm focus:shadow-[#121212] `}
                     />
                     <div className={`flex gap-2 flex-wrap w-[85vw] md:w-[60vw] ${theme==="dark"? "" :"text-gray-600"} `}>
                       <div className='flex gap-1'>
