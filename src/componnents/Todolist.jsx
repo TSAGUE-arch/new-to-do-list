@@ -88,7 +88,7 @@ useMemo(()=>{
       {/*modale permettant la modification de la tache*/
         openModal &&
         <div  className="h-screen w-screen fixed  bg-[#00000066] z-9999 grid place-items-center transition-all duration-300 ease-in ">
-          <div className={`grid gap-2 ${theme==="dark"? "bg-gray-800" :"bg-gray-50"} p-8 rounded-lg w-[75vw]`} >
+          <div className={`grid gap-2 ${theme==="dark"? "bg-gray-800" :"bg-gray-50"} p-8 rounded-lg w-[80vw]`} >
                   <span className={`font-bold text-lg ${theme==="dark"? "" :"text-gray-600"}`}>Modifier votre tache</span>
                   <input
                     value={currentTask.text}
