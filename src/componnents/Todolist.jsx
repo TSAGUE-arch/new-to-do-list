@@ -95,7 +95,7 @@ useMemo(()=>{
                     onInput={(e)=>setCurrentTask(prev=>({...prev, text:e.target.value}))}
                     type="text" 
                     placeholder='Editez votre tache...'
-                    className={`mt-5 bg-transparent border-2 ${theme==="dark"? "" :"placeholder:text-gray-400 text-gray-600"}  border-[#121212] pt-1 pb-0.5 px-2 rounded-md focus:outline-none focus:shadow-sm focus:shadow-[#121212] `}
+                    className={` w-[65vw] mt-5 bg-transparent border-2 ${theme==="dark"? "" :"placeholder:text-gray-400 text-gray-600"}  border-[#121212] pt-1 pb-0.5 px-2 rounded-md focus:outline-none focus:shadow-sm focus:shadow-[#121212] `}
                   />
                   <div className={`flex gap-2 flex-wrap w-[60vw] ${theme==="dark"? "" :"text-gray-600"} `}>
                     {Categories.map((n)=>
@@ -107,11 +107,11 @@ useMemo(()=>{
                   </div>
                   <button
                     onClick={()=>EditerTache()}
-                    className='w-[60vw] bg-green-700 rounded-sm pt-0.5 pb-0.5 text-md font-bold cursor-pointer hover:bg-green-900'
+                    className=' w-[65vw] bg-green-700 rounded-sm pt-0.5 pb-0.5 text-md font-bold cursor-pointer hover:bg-green-900'
                   >
                     ✅
                   </button>
-                  <span className='block text-md text-center text-red-500 font-bold  '>
+                  <span className='block text-md text-center text-red-500 font-bold text-sm  sm:text-md'>
                       {error.editInputIsEmpty && "veuiller remplir correctement le champ de texte"}
                   </span>
           </div>
@@ -149,7 +149,7 @@ useMemo(()=>{
                   >
                     Ajouter
                   </button>
-                  <span className='block text-md text-center text-red-500 font-bold  '>
+                  <span className='block text-md text-center text-red-500 font-bold text-sm  sm:text-md '>
                       {error.empty && "veuillez remplir correctement le champ de texte"}
                       {error.full && "limite de taches atteinte"}
                   </span>
